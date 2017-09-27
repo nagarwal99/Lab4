@@ -7,20 +7,33 @@
  * 4. Add comments and Javadoc comments where needed
  * 5. Remove unnecessary comments as appropriate
  */
+/**
+ * A class that checks if one larger string is part of another smaller string.
+ */
+public class ReclamationProject {
+/**
+ * Returns the portion of a string that is the same as a part of another string.
+ * @param first a string
+ * @param second a string
+ * @return any part of the strings that are similar
+ */
+    public static String doIt(final String first, final String second) {
+        String smaller = first;
+        String larger = second;
+        if (smaller.length() > larger.length()) {
+            String temp = smaller;
+            smaller = larger;
+            larger = temp;
+            }
+        String similar = "";
 
-public class ReclamationProject
-{
-    static String doit(String a,String b){
-        if (a.length() > b.length()){
-            String c = a; // TODO: set c to a
-            a=b; b=c;}
-        String r = (a.equals(b)) ? "" : ""; // I love the ternary operator!
-        /*
-         * For loop with i
-         */
-        for (int i = 0; i < a.length(); i++) { for (int j = a.length() - i; j > 0; j--) {
-                for (int k = 0; k < b.length()- j; k++) {
-                    r = (a.regionMatches(i, b, k, j) && j >r.length()) ? a.substring(i,i + j) : r; // Do it!
-                        }} // Ah yeah
-        } return r; }
+        for (int i = 0; i < smaller.length(); i++) {
+            for (int j = smaller.length() - i; j > 0; j--) {
+                for (int k = 0; k < larger.length() - j; k++) {
+                    if (smaller.regionMatches(i, larger, k, j) && j > similar.length()) {
+                        similar = smaller.substring(i, i + j);
+                    }
+                }
+            }
+        } return similar; }
 }
